@@ -30,7 +30,37 @@ const Dice = ({imgUrl}: DiceProps): JSX.Element => {
 }
 
 function App(): JSX.Element {
-  const [diceImg, setDiceImg] = useState(DiceOne)
+  const [diceImg, setDiceImg] = useState<ImageSourcePropType>
+  (DiceOne)
+
+  const rollDiceTap = () => {
+    let randomNum = Math.floor(Math.random() * 6) + 1;
+
+    switch (randomNum) {
+      case 1:
+        setDiceImg(DiceOne);
+        break;
+      case 2:
+        setDiceImg(DiceTwo);
+        break;
+      case 3:
+        setDiceImg(DiceThree);
+        break;
+      case 4:
+        setDiceImg(DiceFour);
+        break;
+      case 5:
+        setDiceImg(DiceFive);
+        break;
+      case 6:
+        setDiceImg(DiceSix);
+        break;
+      default:
+        setDiceImg(DiceOne);
+    }
+  }
+
+
   return (
     <View style={styles.container}>
       <Dice imgUrl={diceImg}/>
