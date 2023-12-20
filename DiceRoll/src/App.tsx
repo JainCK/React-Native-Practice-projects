@@ -2,9 +2,11 @@ import React from 'react';
 import type { PropsWithChildren } from 'react';
 import {
 
+  ImageSourcePropType,
   StyleSheet,
   Text,
   View,
+  Image,
 } from 'react-native';
 
 import DiceOne from '../assets/One.png'
@@ -14,6 +16,17 @@ import DiceFour from '../assets/Four.png'
 import DiceFive from '../assets/Five.png'
 import DiceSix from '../assets/Six.png'
 
+type DiceProps = PropsWithChildren<{
+  imgUrl: ImageSourcePropType
+}>
+
+const Dice = ({imgUrl}: DiceProps): JSX.Element => {
+   return (
+    <View>
+      <Image  style={styles.diceImage} source={imgUrl}/>
+    </View>
+   )
+}
 
 function App(): JSX.Element {
 
