@@ -8,6 +8,7 @@ import {
   Text,
   View,
   Image,
+  Pressable,
 } from 'react-native';
 
 import DiceOne from '../assets/One.png'
@@ -64,6 +65,9 @@ function App(): JSX.Element {
   return (
     <View style={styles.container}>
       <Dice imgUrl={diceImg}/>
+      <Pressable>
+        <Text style={styles.rollDiceBtnText}>Roll The Dice</Text>
+      </Pressable>
     </View>
   )
 }
