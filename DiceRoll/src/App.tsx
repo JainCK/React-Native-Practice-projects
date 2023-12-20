@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import type { PropsWithChildren } from 'react';
 import {
 
@@ -29,10 +30,10 @@ const Dice = ({imgUrl}: DiceProps): JSX.Element => {
 }
 
 function App(): JSX.Element {
-
+  const [diceImg, setDiceImg] = useState(DiceOne)
   return (
-    <View>
-      <Text>Text</Text>
+    <View style={styles.container}>
+      <Dice imgUrl={diceImg}/>
     </View>
   )
 }
