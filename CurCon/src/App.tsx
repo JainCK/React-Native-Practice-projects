@@ -7,8 +7,10 @@ import {
   StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
+  TextInput,
+  FlatList,
   View,
+  Pressable,
 } from 'react-native';
 
 
@@ -47,15 +49,48 @@ function App(): React.JSX.Element {
   }
   
   return (
-    <SafeAreaView>
-      <StatusBar
-      />
-     <View>
-      <Text>
-
-      </Text>
-     </View>
-    </SafeAreaView>
+    <>
+      <StatusBar/>
+      <View style={styles.container}>
+        <View style={styles.topContainer}>
+          <View style={styles.rupeesContainer}>
+            <Text style={styles.rupee}>₹</Text>
+            <TextInput
+            maxLength={14}
+            value={inputVal}
+            clearButtonMode='always' //only for iOS
+            onChangeText={setInputVal}
+            keyboardType='number-pad'
+            placeholder='Enter amount in Rupees'
+            />
+          </View>
+          {resultVal && (
+            <Text style={styles.resultTxt} >
+              {resultVal}
+            </Text>
+          )}
+        </View>
+        <View style={styles.bottomContainer}>
+          <FlatList
+          numColumns={3}
+          data={currencyByRupee}
+          keyExtractor={item => item.name}
+          renderItem={({item}) => (
+            <Pressable
+            style={[
+              styles.button, 
+              targetCurrency === item.name && styles.selected
+            ]}
+            onPress={() => buttonPressed(item)}
+            >
+              <CurBtn {...item} />
+            </Pressable>
+          )}
+          />
+        </View>
+      </View>
+      
+    </>
   );
 }
 
