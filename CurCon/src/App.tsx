@@ -13,12 +13,15 @@ import {
 } from 'react-native';
 
 
+import { currencyByRupee  } from './constants';
+import CurBtn from './components/CurBtn';
+
 
 
 function App(): React.JSX.Element {
   
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaView>
       <StatusBar
       />
      <View>
