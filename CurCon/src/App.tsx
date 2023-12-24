@@ -1,6 +1,5 @@
-
-
-import React from 'react';
+import React, { useState } from 'react';
+import Snackbar from 'react-native-snackbar';
 
 import {
   SafeAreaView,
@@ -19,6 +18,33 @@ import CurBtn from './components/CurBtn';
 
 
 function App(): React.JSX.Element {
+  const [inputVal, setInputVal] = useState('')
+  const [resultVal, setResultVal] = useState('')
+  const [targetCurrency, setTargetCurrency] = useState('')
+  
+  const buttonPressed = (targetVal: Currency) =>{
+    if (!inputVal) {
+      return Snackbar.show({
+        text: "Enter a Val to convert",
+        backgroundColor: "#EA7773",
+        textColor: "#FFFFFF"
+      })
+    } 
+
+    const inputAmt = parseFloat(inputVal)
+    if (!isNaN(inputAmt)){
+      const convertedVal = inputAmt * targetVal.value
+      const result = `${targetVal.symbol} ${convertedVal.toFixed(2)}`
+      setResultVal(result)
+      setTargetCurrency(targetVal.name)
+    } else {
+      return Snackbar.show({
+        text: "ENot a valid number",
+        backgroundColor: "#EA7773",
+        textColor: "#FFFFFF"
+      })
+    }
+  }
   
   return (
     <SafeAreaView>
