@@ -8,14 +8,16 @@ type IconsProp = PropsWithChildren <{
     name : string;
 }>
 
-const icons = ({name}) => {
+const icons = ({name} : IconsProp) => {
 switch (name) {
     case 'circle':
         return <Icon name="circle-thin" size={38} color = "#F7CD2E" ></Icon>
         break;
-
+        case 'circle':
+            return <Icon name="times" size={38} color = "#39CC77" ></Icon>
+            break;
     default:
-        break;
+        return <Icon name="pencil" size={38} color = "#39CC77" ></Icon>
 }
 }
 
